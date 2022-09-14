@@ -1,12 +1,11 @@
 ﻿using AutoCompleteUtils;
-using System.Globalization;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Globalization;
 
 class Account
 {
 	public double balance { get; set; }
-	List<Item> items = new();
+	public List<Item> items = new();
 	public Account(double balance=0)
 	{
 		this.balance = balance;
@@ -16,19 +15,20 @@ class Account
 		this.balance= balance;
 		this.items = items;
 	}
-	public class Item
+	
+}
+public class Item
+{
+	public string Title { get; private set; }
+	public double Amount { get; private set; }
+	public DateOnly Date { get; private set; }
+	public bool isIncome { get; private set; }
+	public Item(string title, double amount, DateOnly date, bool isIncome)
 	{
-		public string Title { get; private set; }
-		public double Amount { get; private set; }
-		public string Month { get; private set; }
-		public bool isIncome { get; private set; }
-		public Item(string title, double amount, string month, bool isIncome)
-		{
-			Title = title;
-			Amount = amount;
-			Month = month;
-			this.isIncome = isIncome;
-		}
+		Title = title;
+		Amount = amount;
+		Date = date;
+		this.isIncome = isIncome;
 	}
 }
 class Program
@@ -144,7 +144,6 @@ class Program
 			"new income",
 			"new expense"
 		};
-		string[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
 		Console.Clear();
 		Console.WriteLine("Add new Items:");
 		bool con = true;
@@ -195,10 +194,33 @@ class Program
 						Console.WriteLine("Too " + (split.Length>5?"many":"few") + " arguments! Must have 4 arguments.");
 						break;
 					}
-					if (!(split[1].ToLower() == "income" || split[1].ToLower() == "expense"))
+					var type = split[1].ToLower() == "income" ? 0 : split[1].ToLower() == "expense" ? 1 : 2;
+					if (type == 2)
 					{
 						Console.WriteLine("First argument must either be 'income' or 'expense'!");
+						break;
 					}
+					double amount;
+					if (!double.TryParse(split[3],NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amount))
+					{
+						Console.WriteLine("Amount must be a vallid number!");
+						break;
+					}
+					if (amount != Math.Floor(100 * amount) / 100)
+					{
+						Console.WriteLine("Too many decimals!");
+						break;
+					}
+					DateOnly date;
+					if (split[4].ToLower() == "today")
+					{
+						date = DateOnly.FromDateTime(DateTime.Today);
+					}
+					else if (!DateOnly.TryParse(split[4], out date))
+					{
+						Console.WriteLine("Date is invalid!");
+					}
+					account.items.Add(new Item(split[2], amount, date, type==0));
 					break;
 				default:
 					Console.WriteLine("Unknown command!");
@@ -252,7 +274,7 @@ class Program
 				Console.WriteLine("Unknown command!");
 				continue;
 			}
-			switch (split[0])
+			switch (split[0].ToLower())
 			{
 				case "back":
 					if (split.Length > 1)
@@ -262,6 +284,9 @@ class Program
 					}
 					con = false;
 					StartupScreen(account);
+					break;
+				case "edit":
+
 					break;
 				default:
 					Console.WriteLine("Unknown command!");
