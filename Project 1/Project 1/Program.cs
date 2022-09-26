@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Globalization;
+using System.Text.Json;
 
 class Account
 {
@@ -41,7 +42,8 @@ class Program
 {
 	static async Task Main(string[] args)
 	{
-		Account account = new();
+
+		Account account = new(loadFromFile());
 
 		StartupScreen(account);
 	}
@@ -378,6 +380,22 @@ class Program
 	{
 		Console.Clear();
 		Console.WriteLine("Saving and quiting...");
-
+		var options = new JsonSerializerOptions()
+		{
+			WriteIndented = true
+		};
+		var jsonString = JsonSerializer.Serialize(account.items, options);
+		File.WriteAllText("account.json", jsonString);
+	}
+	private static List<Item> loadFromFile()
+	{
+		string fileName = "account.json";
+		List<Item> items = new();
+		if (File.Exists(fileName))
+		{
+			string jsonString = File.ReadAllText(fileName);
+			items = JsonSerializer.Deserialize<List<Item>>(jsonString);
+		}
+		return items;
 	}
 }
