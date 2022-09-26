@@ -1,0 +1,15 @@
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\Project 1.exe
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\Project 1.deps.json
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\Project 1.runtimeconfig.json
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\Project 1.dll
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\Project 1.pdb
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.csproj.AssemblyReference.cache
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.AssemblyInfoInputs.cache
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.AssemblyInfo.cs
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.csproj.CoreCompileInputs.cache
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.dll
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\refint\Project 1.dll
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.pdb
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.genruntimeconfig.cache
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\ref\Project 1.dll
