@@ -87,7 +87,7 @@ class Program
 
 	private static void ShowList(List<Item> list)
 	{
-		List<Item> sortedList = list.OrderByDescending(item => item.Price).ToList();
+		List<Item> sortedList = list.OrderBy(item => item.Price).ToList();
 		Console.Clear();
 		Console.WriteLine("\nWelcome to Productlist: List");
 		Console.WriteLine("----------------------------\n");
