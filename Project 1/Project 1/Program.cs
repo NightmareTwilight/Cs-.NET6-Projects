@@ -9,9 +9,9 @@ class Account
 	public double balance()
 	{
 		double balance = 0;
-		foreach (Item item in items.Where(item => item.Date <= DateOnly.FromDateTime(DateTime.Today)))
+		foreach (Item item in items.Where(item => item.Date <= DateOnly.FromDateTime(DateTime.Today))) //Ensures that only current items are calculated.
 		{
-			balance += item.Amount * (item.isIncome ? 1 : -1);
+			balance += item.Amount * (item.isIncome ? 1 : -1); //Decides whether to add or subtract the amount.
 		}
 		return balance;
 	}
@@ -95,7 +95,9 @@ class Program
 			}
 		}
 	}
-
+	/**
+	 * <summary>Items menu, lists expenses and incomes under their year and month. Shows all by default, but can selectively show only expenses or incomes.</summary>
+	 **/
 	private static void ShowItemsScreen(Account account, int ShowType = 0)
 	{
 		var commands = new List<string>
@@ -110,11 +112,11 @@ class Program
 		bool con = true;
 		Console.WriteLine("Type 'back' to go back to start screen.");
 		List<Item> sorted = account.items.OrderBy(item => item.Date).ToList();
-		List<int> uniqueYears = sorted.Select(item => item.Date.Year).Distinct().ToList();
+		List<int> uniqueYears = sorted.Select(item => item.Date.Year).Distinct().ToList(); //Grabs all relevant years.
 		foreach (int year in uniqueYears)
 		{
 			Console.WriteLine(year);
-			List<int> uniqueMonths = sorted.Where(item => item.Date.Year == year).Select(item => item.Date.Month).Distinct().ToList();
+			List<int> uniqueMonths = sorted.Where(item => item.Date.Year == year).Select(item => item.Date.Month).Distinct().ToList(); //Grabs all relevant months for that year.
 			foreach (int month in uniqueMonths)
 			{
 				Console.WriteLine(CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(month).PadLeft(5));
@@ -129,7 +131,7 @@ class Program
 		while (con)
 		{
 			string input = Console.ReadLine().Trim();
-			string[] split = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+			string[] split = input.Split(' ', StringSplitOptions.RemoveEmptyEntries); //Functionally trims all spaces
 			if (split.Length == 0)
 			{
 				Console.WriteLine("Unknown command!");
@@ -163,6 +165,9 @@ class Program
 		}
 
 	}
+	/**
+	 * <summary>Menu for adding new items to account.</summary>
+	 **/
 	private static void AddItemsScreen(Account account)
 	{
 		var commands = new List<string>
@@ -206,7 +211,7 @@ class Program
 						break;
 					}
 					double amount;
-					if (!double.TryParse(split[3],NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amount))
+					if (!double.TryParse(split[3],NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amount)) //Ensures that the user can use either commas or dots as the decimal point.
 					{
 						Console.WriteLine("Amount must be a vallid number!");
 						break;
@@ -234,6 +239,9 @@ class Program
 			}
 		}
 	}
+	/**
+	 * <summary>Menu for editing or removing items.</summary>
+	 **/
 	private static void EditItemsScreen(Account account)
 	{
 		var commands = new List<string>
@@ -321,7 +329,7 @@ class Program
 						break;
 					}
 					Console.WriteLine("Item found! Please enter new values: ");
-					bool cancel = false;
+					bool cancel = false; //Whether to remove the item at the end, or not.
 					while (true)
 					{
 						input = Console.ReadLine();
@@ -337,7 +345,7 @@ class Program
 								"\ncancel - cancels editing.");
 							continue;
 						}
-						if (split2[0].ToLower() == "cancel" && split2.Length == 1)
+						if (split2[0].ToLower() == "cancel" && split2.Length == 1) //Ensure that user can back out of editing an item.
 						{
 							Console.WriteLine("Cancelling edit.");
 							cancel = true;
@@ -385,6 +393,9 @@ class Program
 			}
 		}
 	}
+	/**
+	 * <summary>Writes a JSON file containing all items.</summary>
+	 **/
 	private static void SaveAndQuit(Account account)
 	{
 		Console.Clear();
@@ -396,11 +407,14 @@ class Program
 		var jsonString = JsonSerializer.Serialize(account.items, options);
 		File.WriteAllText("account.json", jsonString);
 	}
+	/**
+	 * <summary>Grabs all items from JSON file, if it exists.</summary>
+	 **/
 	private static List<Item> loadFromFile()
 	{
 		string fileName = "account.json";
-		List<Item> items = new();
-		if (File.Exists(fileName))
+		List<Item> items = new(); //Creates a new list, no matter if there's a file or not.
+		if (File.Exists(fileName)) //Grabs data if there is a file
 		{
 			string jsonString = File.ReadAllText(fileName);
 			items = JsonSerializer.Deserialize<List<Item>>(jsonString);
