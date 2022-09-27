@@ -1,7 +1,9 @@
-﻿using System.Text;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.Json;
 
+/**
+ * <summary>Keeps track of the incomes and expenses.</summary>
+ **/
 class Account
 {
 	public double balance()
@@ -14,16 +16,15 @@ class Account
 		return balance;
 	}
 	public List<Item> items;
-	public Account() 
-	{
-		items = new();
-	}
 	public Account(List<Item> items)
 	{
 		this.items = items;
 	}
 
 }
+/**
+ * <summary>Object with title, money amount, when it comes into affect, and whether it's an income or expense.</summary>
+ **/
 public class Item
 {
 	public string Title { get; private set; }
@@ -38,16 +39,24 @@ public class Item
 		this.isIncome = isIncome;
 	}
 }
+/**
+ * <summary>Main program, does setup and launches the main menu.</summary>
+ **/
 class Program
 {
-	static async Task Main(string[] args)
+	/**
+	 * <summary>Main function, does setup and launches the main menu.</summary>
+	 **/
+	static void Main()
 	{
 
-		Account account = new(loadFromFile());
+		Account account = new(loadFromFile()); //injects either a list from save file, or an empty one.
 
 		StartupScreen(account);
 	}
-
+	/**
+	 * <summary>Main manu, Shows current balance and links to all other features.</summary>
+	 **/
 	private static void StartupScreen(Account account)
 	{
 		bool con = true;
