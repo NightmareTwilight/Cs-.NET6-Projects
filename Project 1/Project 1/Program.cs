@@ -1,5 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.Json;
+using DBConnect;
+using Microsoft.EntityFrameworkCore;
 
 /**
  * <summary>Keeps track of the incomes and expenses.</summary>
@@ -44,6 +46,7 @@ public class Item
  **/
 class Program
 {
+	MyDbContext Context = new MyDbContext();
 	/**
 	 * <summary>Main function, does setup and launches the main menu.</summary>
 	 **/
@@ -351,7 +354,7 @@ class Program
 							cancel = true;
 							break;
 						}
-						if (split2.Length != 4)
+						if (split2.Length != 5)
 						{
 							Console.WriteLine("Too " + (split2.Length > 5 ? "many" : "few") + " arguments! Must have 4 arguments.");
 							continue;

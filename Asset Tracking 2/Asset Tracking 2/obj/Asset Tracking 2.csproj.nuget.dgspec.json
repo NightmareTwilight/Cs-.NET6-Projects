@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Project 1\\Project 1\\Project 1.csproj": {}
+    "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Asset Tracking 2\\Asset Tracking 2\\Asset Tracking 2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Project 1\\Project 1\\Project 1.csproj": {
+    "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Asset Tracking 2\\Asset Tracking 2\\Asset Tracking 2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Project 1\\Project 1\\Project 1.csproj",
-        "projectName": "Project 1",
-        "projectPath": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Project 1\\Project 1\\Project 1.csproj",
+        "projectUniqueName": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Asset Tracking 2\\Asset Tracking 2\\Asset Tracking 2.csproj",
+        "projectName": "Asset Tracking 2",
+        "projectPath": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Asset Tracking 2\\Asset Tracking 2\\Asset Tracking 2.csproj",
         "packagesPath": "C:\\Users\\Casper Areskoug\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Project 1\\Project 1\\obj\\",
+        "outputPath": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Asset Tracking 2\\Asset Tracking 2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,14 +44,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.10, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.10, )"
