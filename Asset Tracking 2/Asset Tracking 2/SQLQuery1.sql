@@ -5,12 +5,19 @@ END
 GO
 	USE [AssetTracking]
 GO
-IF OBJECT_ID(N'dbo.Items', N'U') IS NULL
-	CREATE TABLE Items (
+IF OBJECT_ID(N'dbo.Offices', N'U') IS NULL
+	CREATE TABLE Offices (
 		Id INT IDENTITY(1,1) PRIMARY KEY,
-		Title VARCHAR(64),
-		Amount FLOAT,
-		Date Date,
-		IsIncome BIT,
+		Name VARCHAR(64),
+		Currency VARCHAR(64),
+		Conversion FLOAT
+	);
+GO
+IF OBJECT_ID(N'dbo.PCs', N'U') IS NULL
+	CREATE TABLE PCs (
+		Id INT IDENTITY(1,1) PRIMARY KEY,
+		Name VARCHAR(64),
+		Currency VARCHAR(64),
+		Conversion FLOAT
 	);
 GO

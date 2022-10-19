@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Globalization;
 
 class Program //Prevents global variables
 {
 
-	static DataContext context = new();//Initialize Database connection.
+	static AssetContext context = new();//Initialize Database connection.
 	static List<Asset> assets = new();
 	static List<Office> offices = new();
 	static void Main()
@@ -21,6 +22,8 @@ class Program //Prevents global variables
 		bool con = true; //Required since using break in a switch doesn't end the loop.
 		Console.WriteLine("\nWelcome to AssetTracker!" +
 				"\nTo add new Asset, type 'Add' followed by 'Office', 'Asset Type', 'Brand', 'Model', 'Price (in USD)', and 'Purchase Date'." +
+				"\nTo change an Asset, type 'Update' followed by 'Office', 'Asset Type', 'Brand', 'Model', and 'Purchase Date'." +
+				"\nTo remove an Asset, type 'Remove' followed by 'Office', 'Asset Type', 'Brand', 'Model', and 'Purchase Date'." +
 				"\nTo view all Assets, type 'list'." +
 				"\nTo Quit, type 'quit'.");
 
@@ -373,7 +376,7 @@ class Office
 	public string Name { get; private set; }
 	public string Currency { get; private set; }
 	public double Conversion { get; private set; }
-
+	public int Id { get; set; } //For Database
 	/**
 	 * <summary>Object containing information about an office</summary>
 	 * <param name="name">Name of the office</param>
@@ -389,12 +392,16 @@ class Office
 }
 abstract class Asset
 {
-	public Office Office { get; private set; }
-	public DateOnly PurchaseDate { get; protected set; }
-	public double Price { get; protected set; }
-	public string Brand { get; protected set; }
-	public string Model { get; protected set; }
-
+	public Office Office { get; set; }
+	public DateOnly PurchaseDate { get; set; }
+	public double Price { get; set; }
+	public string Brand { get; set; }
+	public string Model { get; set; }
+}
+class PC : Asset
+{
+	public int Id { get; set; } //For Database
+	public PC() { }
 	/**
 	 * <summary>Object containing information about an asset</summary>
 	 * <param name="office">The office the asset belongs to</param>
@@ -403,7 +410,7 @@ abstract class Asset
 	 * <param name="brand">The Brand of the asset</param>
 	 * <param name="model">model of the asset</param>
 	 */
-	public Asset(Office office, DateOnly purchaseDate, double price, string brand, string model)
+	public PC(Office office, DateOnly purchaseDate, double price, string brand, string model)
 	{
 		Office = office;
 		PurchaseDate = purchaseDate;
@@ -412,41 +419,31 @@ abstract class Asset
 		Model = model;
 	}
 }
-
-class PC : Asset
-{
-	/**
-	 * <summary>Object containing information about an asset</summary>
-	 * <param name="office">The office the asset belongs to</param>
-	 * <param name="purchaseDate">Date of purchase 'YYYY/MM/DD', alternatively 'today' for today's date</param>
-	 * <param name="price">The purchase cost of the asset in USD</param>
-	 * <param name="brand">The Brand of the asset</param>
-	 * <param name="model">model of the asset</param>
-	 */
-	public PC(Office office, DateOnly purchaseDate, double price, string brand, string model) :
-		base(office, purchaseDate, price, brand, model)
-	{
-
-	}
-}
 class Laptop : Asset
 {
+	public int Id { get; set; } //For Database
+	public Laptop() { }
 	/**
-	 * <summary>Object containing information about an asset</summary>
-	 * <param name="office">The office the asset belongs to</param>
-	 * <param name="purchaseDate">Date of purchase 'YYYY/MM/DD', alternatively 'today' for today's date</param>
-	 * <param name="price">The purchase cost of the asset in USD</param>
-	 * <param name="brand">The Brand of the asset</param>
-	 * <param name="model">model of the asset</param>
-	 */
-	public Laptop(Office office, DateOnly purchaseDate, double price, string brand, string model) :
-		base(office, purchaseDate, price, brand, model)
+	* <summary>Object containing information about an asset</summary>
+	* <param name="office">The office the asset belongs to</param>
+	* <param name="purchaseDate">Date of purchase 'YYYY/MM/DD', alternatively 'today' for today's date</param>
+	* <param name="price">The purchase cost of the asset in USD</param>
+	* <param name="brand">The Brand of the asset</param>
+	* <param name="model">model of the asset</param>
+	*/
+	public Laptop(Office office, DateOnly purchaseDate, double price, string brand, string model)
 	{
-
+		Office = office;
+		PurchaseDate = purchaseDate;
+		Price = price;
+		Brand = brand;
+		Model = model;
 	}
 }
 class MobilePhone : Asset
 {
+	public int Id { get; set; } //For Database
+	public MobilePhone() { }
 	/**
 	 * <summary>Object containing information about an asset</summary>
 	 * <param name="office">The office the asset belongs to</param>
@@ -455,20 +452,23 @@ class MobilePhone : Asset
 	 * <param name="brand">The Brand of the asset</param>
 	 * <param name="model">model of the asset</param>
 	 */
-	public MobilePhone(Office office, DateOnly purchaseDate, double price, string brand, string model) :
-		base(office, purchaseDate, price, brand, model)
+	public MobilePhone(Office office, DateOnly purchaseDate, double price, string brand, string model)
 	{
-
+		Office = office;
+		PurchaseDate = purchaseDate;
+		Price = price;
+		Brand = brand;
+		Model = model;
 	}
 }
-class DataContext : DbContext
+class AssetContext : DbContext
 {
+	public DbSet<Office> Offices { get; set; }
 	public DbSet<PC> PCs { get; set; }
 	public DbSet<Laptop> Laptops { get; set; }
 	public DbSet<MobilePhone> Phones { get; set; }
-	public DbSet<Office> Offices { get; set; }
 
-	string connectionString = "Server=.\\SQLEXPRESS;Database=AssetTracking;Trusted_Connection=True;";
+	string connectionString = @"Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = AssetTracking; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
@@ -478,4 +478,25 @@ class DataContext : DbContext
 			optionsBuilder.UseSqlServer(connectionString);
 		}
 	}
+	protected override void ConfigureConventions(ModelConfigurationBuilder builder)
+	{
+		builder.Properties<DateOnly>()
+			.HaveConversion<DateOnlyConverter>()
+			.HaveColumnType("date");
+	}
+}
+
+
+/// <summary>
+/// Converts <see cref="DateOnly" /> to <see cref="DateTime"/> and vice versa.
+/// </summary>
+public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
+{
+	/// <summary>
+	/// Creates a new instance of this converter.
+	/// </summary>
+	public DateOnlyConverter() : base(
+			d => d.ToDateTime(TimeOnly.MinValue),
+			d => DateOnly.FromDateTime(d))
+	{ }
 }
