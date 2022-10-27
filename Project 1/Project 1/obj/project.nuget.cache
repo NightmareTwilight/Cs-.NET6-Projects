@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DyngAE2VRFN4SRqoD7o0DIHla7nYju6C0hBoz45+Vgr91FJYQrip4n8yXbUFmLzvf46EVHjHTYWhr2SOWE1R1A==",
+  "dgSpecHash": "UFI3vdjC27fF2MmASHTvC3kgMHbtpeptuu10VHaLypEZiRWHPU7sPWVhbWyBah7SmjBWlkmGD8o+ZUxFlX0VOg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Casper Areskoug\\Documents\\C# .NET Utbildining\\Cs-.NET6-Projects\\Project 1\\Project 1\\Project 1.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Users\\Casper Areskoug\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Casper Areskoug\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Casper Areskoug\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Casper Areskoug\\.nuget\\packages\\newtonsoft.json\\13.0.2-beta1\\newtonsoft.json.13.0.2-beta1.nupkg.sha512",
     "C:\\Users\\Casper Areskoug\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Casper Areskoug\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Casper Areskoug\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

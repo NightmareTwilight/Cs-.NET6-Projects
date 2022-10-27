@@ -63,3 +63,4 @@ C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project
 C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\obj\Debug\net6.0\Project 1.csproj.CopyComplete
+C:\Users\Casper Areskoug\Documents\C# .NET Utbildining\Cs-.NET6-Projects\Project 1\Project 1\bin\Debug\net6.0\Newtonsoft.Json.dll

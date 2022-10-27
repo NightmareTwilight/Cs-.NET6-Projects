@@ -1,5 +1,7 @@
-﻿using System.Globalization;
+﻿using System.Formats.Asn1;
+using System.Globalization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 /**
  * <summary>Keeps track of the incomes and expenses.</summary>
@@ -9,11 +11,11 @@ class Account
 	public double balance()
 	{
 		double balance = 0;
-		foreach (Item item in items.Where(item => item.Date <= DateOnly.FromDateTime(DateTime.Today))) //Ensures that only current items are calculated.
+		foreach (Item item in items.Where(item => item.Date <= DateTime.Today)) //Ensures that only current items are calculated.
 		{
 			balance += item.Amount * (item.isIncome ? 1 : -1); //Decides whether to add or subtract the amount.
 		}
-		return balance;
+		return (Math.Floor(100 * balance) / 100);
 	}
 	public List<Item> items;
 	public Account(List<Item> items)
@@ -29,9 +31,10 @@ public class Item
 {
 	public string Title { get; private set; }
 	public double Amount { get; private set; }
-	public DateOnly Date { get; private set; }
+	public DateTime Date { get; private set; }
+
 	public bool isIncome { get; private set; }
-	public Item(string title, double amount, DateOnly date, bool isIncome)
+	public Item(string title, double amount, DateTime date, bool isIncome)
 	{
 		Title = title;
 		Amount = amount;
@@ -62,7 +65,7 @@ class Program
 		bool con = true;
 		Console.Clear();
 		Console.WriteLine("Welcome to TrackMoney" +
-			$"\nYou have {account.balance} kr on your account." +
+			"\nYou have "+account.balance().ToString()+" kr on your account." +
 			"\nPick an option:" +
 			"\n(1) Show Items (All/Expense(s)/Income(s)" +
 			"\n(2) Add new Expense/Income" +
@@ -223,12 +226,12 @@ class Program
 						Console.WriteLine("Too many decimals!");
 						break;
 					}
-					DateOnly date;
+					DateTime date;
 					if (split[4].ToLower() == "today")
 					{
-						date = DateOnly.FromDateTime(DateTime.Today);
+						date = DateTime.Today;
 					}
-					else if (!DateOnly.TryParse(split[4], out date))
+					else if (!DateTime.TryParse(split[4], out date))
 					{
 						Console.WriteLine("Date is invalid!");
 						break;
@@ -292,8 +295,8 @@ class Program
 						Console.WriteLine("First argument must either be 'income' or 'expense'!");
 						break;
 					}
-					DateOnly date;
-					if (!DateOnly.TryParse(split[3], out date))
+					DateTime date;
+					if (!DateTime.TryParse(split[3], out date))
 					{
 						Console.WriteLine("Date is invalid!");
 						break;
@@ -319,8 +322,8 @@ class Program
 						Console.WriteLine("First argument must either be 'income' or 'expense'!");
 						break;
 					}
-					DateOnly date2;
-					if (!DateOnly.TryParse(split[3], out date2))
+					DateTime date2;
+					if (!DateTime.TryParse(split[3], out date2))
 					{
 						Console.WriteLine("Date is invalid!");
 						break;
@@ -377,10 +380,10 @@ class Program
 							Console.WriteLine("Too many decimals!");
 							continue;
 						}
-						DateOnly date3;
-						if (split2[4].ToLower() == "today") date3 = DateOnly.FromDateTime(DateTime.Today);
+						DateTime date3;
+						if (split2[4].ToLower() == "today") date3 = DateTime.Today;
 						else if (split2[4].ToLower() == "keep") date3 = item2.Date;
-						else if (!DateOnly.TryParse(split2[4], out date3))
+						else if (!DateTime.TryParse(split2[4], out date3))
 						{
 							Console.WriteLine("Date is invalid!");
 							continue;
