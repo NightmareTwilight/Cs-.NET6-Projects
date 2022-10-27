@@ -111,6 +111,7 @@ class Program
 		Console.WriteLine("Showing All " + (ShowType == 0 ? "Items." : ShowType == 1 ? "Incomes." : "Expenses."));
 		bool con = true;
 		Console.WriteLine("Type 'back' to go back to start screen.");
+		Console.WriteLine("Type 'help' for more info.");
 		List<Item> sorted = account.items.OrderBy(item => item.Date).ToList();
 		List<int> uniqueYears = sorted.Select(item => item.Date.Year).Distinct().ToList(); //Grabs all relevant years.
 		foreach (int year in uniqueYears)
@@ -180,6 +181,7 @@ class Program
 		Console.WriteLine("Add new Items:");
 		bool con = true;
 		Console.WriteLine("Type 'back' to go back to start screen.");
+		Console.WriteLine("Type 'help' for more info.");
 		while (con)
 		{
 			string input = Console.ReadLine().Trim();
@@ -254,6 +256,7 @@ class Program
 		Console.WriteLine("Edit Items:");
 		bool con = true;
 		Console.WriteLine("Type 'back' to go back to start screen.");
+		Console.WriteLine("Type 'help' for more info.");
 		while (con)
 		{
 			string input = Console.ReadLine().Trim();
