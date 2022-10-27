@@ -1,7 +1,5 @@
 ﻿using System.Globalization;
 using System.Text.Json;
-using DBConnect;
-using Microsoft.EntityFrameworkCore;
 
 /**
  * <summary>Keeps track of the incomes and expenses.</summary>
@@ -46,7 +44,6 @@ public class Item
  **/
 class Program
 {
-	MyDbContext Context = new MyDbContext();
 	/**
 	 * <summary>Main function, does setup and launches the main menu.</summary>
 	 **/
