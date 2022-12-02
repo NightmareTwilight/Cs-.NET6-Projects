@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h1 class="display-4">Welcome back, @User.Identity?.Name</h1>
+                <p>To view your sheets, got to <a class="text-dark" asp-area="" asp-controller="Sheets" asp-action="Index">Sheets</a>, or to view all sheets go to <a class="text-dark" asp-area="" asp-controller="Sheets" asp-action="All">All</a></p>
+    }
+    else
+    {
+        <h1 class="display-4">Welcome to the Conquest of Elysium TTRPG Sheet Manager.</h1>
+        <p>Please log in to start creating and viewing sheets.</p>
+    }
+    
+</div>

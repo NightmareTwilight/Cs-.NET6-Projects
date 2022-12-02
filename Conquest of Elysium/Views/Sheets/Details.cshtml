@@ -1,0 +1,282 @@
+﻿@model Conquest_of_Elysium.Models.Sheet
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<input type="hidden" asp-for="Id" />
+<div class="form-group">
+    <label asp-for="Name" form="sheet" class="control-label"></label>
+    <input asp-for="Name" form="sheet" class="form-control" disabled/>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="row">
+    <div class="form-group col-1">
+        <label asp-for="Health" form="sheet" class="control-label"></label>
+        <input asp-for="Health" form="sheet" class="form-control" disabled/>
+    </div>
+    <div class="form-group col-1">
+        <label asp-for="MaxHealth" form="sheet" class="control-label"></label>
+        <input asp-for="MaxHealth" form="sheet" class="form-control" disabled/>
+    </div>
+    <div class="form-group col">
+        <label asp-for="Class" form="sheet" class="control-label"></label>
+        <input asp-for="Class" form="sheet" class="form-control" disabled/>
+    </div>
+    <div class="form-group col-1">
+        <label asp-for="Level" form="sheet" class="control-label"></label>
+        <input asp-for="Level" form="sheet" class="form-control" disabled/>
+    </div>
+    <div class="form-group col">
+        <label asp-for="Race" form="sheet" class="control-label"></label>
+        <input asp-for="Race" form="sheet" class="form-control" disabled/>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div>
+        <form asp-action="Edit" class="form-inline" id="sheet">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label asp-for="Head" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="Head" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <label asp-for="LArm" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="LArm" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label asp-for="Chest" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="Chest" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label asp-for="RArm" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="RArm" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label asp-for="LLeg" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="LLeg" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col-1">
+
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label asp-for="RLeg" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="RLeg" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col-2">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <label asp-for="Items" class="form-label"></label>
+                        </div>
+                        <div>
+                            <textarea asp-for="Items" disabled></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="WeS" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="WeS" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="RaS" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="RaS" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="MaI" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="MaI" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="DiI" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="DiI" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="INT" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="INT" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="PyR" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="PyR" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="MaR" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="MaR" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="MeR" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="MeR" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="STR" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="STR" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="TNK" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="TNK" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="SpC" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="SpC" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="DEX" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="DEX" class="form-control" disabled />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="AWE" class="control-label"></label>
+                        </div>
+                        <div class="col-6">
+                            <input asp-for="AWE" class="form-control" disabled />
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <label asp-for="Passive" class="form-label"></label>
+                    </div>
+                    <div>
+                        <textarea asp-for="Passive" disabled></textarea>
+                    </div>
+                    <div>
+                        <label asp-for="Active" class="form-label"></label>
+                    </div>
+                    <div>
+                        <textarea asp-for="Active" disabled></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <div class="form-group">
+                                <div>
+                                    <label asp-for="Divine" class="form-label"></label>
+                                </div>
+                                <div>
+                                    <textarea asp-for="Divine" disabled></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label asp-for="Insanity" class="control-label"></label>
+                                <input asp-for="Insanity" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <div>
+                                <label asp-for="Bless" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="Bless" disabled></textarea>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div>
+                                <label asp-for="Effects" class="form-label"></label>
+                            </div>
+                            <div>
+                                <textarea asp-for="Effects" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-info" asp-action="All">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

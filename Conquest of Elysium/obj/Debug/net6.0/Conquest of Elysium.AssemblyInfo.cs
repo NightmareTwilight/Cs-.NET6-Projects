@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Conquest_of_Elysium-B73C9787-741E-4636-94A5-420F83DA8909")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Conquest of Elysium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Conquest_of_Elysium.Models.Sheet>
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager
+
+@{
+    ViewData["Title"] = "Sheets";
+}
+
+<h1>Your Sheets</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">New Sheet</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
