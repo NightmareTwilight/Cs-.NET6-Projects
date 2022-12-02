@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Conquest_of_Elysium.Models.Sheet>
+
+@{
+    ViewData["Title"] = "Sheets";
+}
+
+<h1>All Sheets</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Owner
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.User.UserName)</p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

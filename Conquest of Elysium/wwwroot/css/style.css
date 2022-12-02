@@ -1,0 +1,54 @@
+.text_area
+{
+    word-break: break-all;
+    cursor: text;
+}
+.text_area:empty
+{
+    width: 1.1em;
+}
+.box
+{
+    border: 0.1em solid black;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+.text_box
+{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+[contenteditable] {
+    outline: 0px solid transparent;
+    content: "";
+}
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+    border-bottom: 0.1em solid black;
+}
+textarea {
+    resize: none;
+    height: auto;
+    width: 100%;
+    background-attachment: local;
+    background-image: 
+        linear-gradient(to right, white 10px, transparent 10px), 
+        linear-gradient(to left, white 10px, transparent 10px), 
+        repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+    line-height: 31px !important;
+    padding: 8px 10px;
+}
+label.control-label {
+    vertical-align: middle;
+}   
+#stats
+{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+#HP
+{
+    color: red;
+}

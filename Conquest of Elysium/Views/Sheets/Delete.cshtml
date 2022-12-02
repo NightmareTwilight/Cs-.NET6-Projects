@@ -1,0 +1,16 @@
+﻿@model Conquest_of_Elysium.Models.Sheet
+
+@{
+    ViewData["Title"] = "Remove Sheet";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete @Html.DisplayFor(model => model.Name)?</h3>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Yes" class="btn btn-danger" /> |
+        <a class="btn btn-info" asp-action="Edit" asp-route-id="@Model.Id">No</a>
+    </form>
+</div>
