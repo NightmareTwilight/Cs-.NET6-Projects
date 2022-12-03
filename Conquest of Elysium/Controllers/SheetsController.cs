@@ -78,7 +78,7 @@ namespace Conquest_of_Elysium.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 		[Authorize]
-		public async Task<IActionResult> Create([Bind("Id,Name,Health,MaxHealth,Class,UserID")] Sheet sheet)
+		public async Task<IActionResult> Create([Bind("Id,Name,Health,MaxHealth,Race,Class,UserID")] Sheet sheet)
         {
 			var user = await _userManager.GetUserAsync(User);
 
